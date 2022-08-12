@@ -63,12 +63,12 @@ function Cards() {
                 <Col key={key} className="my-5">
                   <Card className={data.title} >
                     <Card.Body>
-                      <Card.Text className='fs-4'>{data.title}</Card.Text>
-                      <Card.Title className='fs-2 my-3'>{Intl.NumberFormat('en-US').format(data.value)}</Card.Title>
-                      <span className='fs-5'>{data.updatedText}</span>
+                      <Card.Text className='fs-5 text-decoration-underline'>{data.title}</Card.Text>
+                      <Card.Title className='fs-3 my-3'>{Intl.NumberFormat('en-US').format(data.value)}</Card.Title>
+                      <span >{data.updatedText}</span>
                       <Card.Text className='text-muted fs-5 my-2 '><Moment format="Do MMM YYYY, hh:mm:ss">{data.updated}</Moment></Card.Text>
                       <Card.Text className='my-4'>{data.src}</Card.Text>
-                      <Card.Text className='fs-4'>{country ? country : "worldwide"}</Card.Text>
+                      <Card.Text className='fs-5'>{country ? country : "worldwide"}</Card.Text>
                     </Card.Body>
                   </Card>
                 </Col>
