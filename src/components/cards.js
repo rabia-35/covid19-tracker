@@ -2,22 +2,26 @@ import {useEffect} from 'react'
 import {useSelector, useDispatch} from "react-redux"
 import {fetchCovid} from "../redux/covidSlice"
 import {Container, Row, Col, Card} from "react-bootstrap"
+import Moment from 'react-moment'
 
 
 function Cards() {
     const items=useSelector(state=>state.covid.items)
     const status=useSelector(state=>state.covid.status)
+    const country=useSelector(state=>state.covid.country)
+
     const dispatch=useDispatch()
     useEffect(()=>{
         if(status==="idle"){ 
             dispatch(fetchCovid())
         }
+       
     },[dispatch, status])
 
     let datas=[]
 
     if(items){
-      //console.log(items)
+      
       datas=[
         {
           title:"Infected",
@@ -49,7 +53,7 @@ function Cards() {
         }
       ]
     }
-    // console.log(datas)
+    
   return (
     <Container>
         <Row  xs={1} md={2} lg={4}>
@@ -62,9 +66,9 @@ function Cards() {
                       <Card.Text className='fs-4'>{data.title}</Card.Text>
                       <Card.Title className='fs-2 my-3'>{Intl.NumberFormat('en-US').format(data.value)}</Card.Title>
                       <span className='fs-5'>{data.updatedText}</span>
-                      <Card.Text className='text-muted '>{data.updated} </Card.Text>
+                      <Card.Text className='text-muted fs-5 my-2 '><Moment format="Do MMM YYYY, hh:mm:ss">{data.updated}</Moment></Card.Text>
                       <Card.Text className='my-4'>{data.src}</Card.Text>
-                      <Card.Text>Country</Card.Text>
+                      <Card.Text className='fs-4'>{country ? country : "worldwide"}</Card.Text>
                     </Card.Body>
                   </Card>
                 </Col>
