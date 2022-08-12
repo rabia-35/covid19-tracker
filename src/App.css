@@ -1,38 +1,50 @@
-.App {
-  text-align: center;
-}
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+      .App {
+        text-align: center;
+        font-family: 'Montserrat', sans-serif;
+      }
+/* Header Section*/
+    .header{
+      background:url(/public/images/cover.jpg) no-repeat;
+      background-size: cover;
+      height: 70vh;
+      padding-top: 10%;
+    }
+    .header h1{
+      font-size: 600%;
+    }
+    .header-icon{
+      color: rgb(37, 197, 197);
+    }
+    .header h6{
+      font-size: 110%;
+      letter-spacing: -0.8px;
+    }
+    .header p{
+      color:rgb(37, 197, 197);
+    }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+    .menu-items{
+      max-height: 300px;
+      overflow:auto;
+    }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+/* Cards Section */
+    .Infected {
+      background-color: #b1d7fe;
+      max-width: 80%;
+    }
+    .Recovered{
+      background-color: #ddf6e2;
+      max-width: 80%;
+    }
+    .Deaths{
+      background-color: #f4d7d7;
+      max-width: 80%;
+    }
+    .Active{
+      background-color: #f5e1ca;
+      max-width: 80%;
+    }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
