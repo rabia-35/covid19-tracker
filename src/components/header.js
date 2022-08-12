@@ -2,16 +2,20 @@ import { useEffect } from 'react'
 import {Container, Dropdown, } from "react-bootstrap"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faVirusCovid } from '@fortawesome/free-solid-svg-icons'
-import {fetchCountryCovid} from "../redux/covidSlice"
+import {fetchCountriesCovid, fetchCovid, selectedCountry} from "../redux/covidSlice"
 import {useSelector, useDispatch} from "react-redux"
 
 function Header() {
-  const countrys=useSelector(state=>state.covid.country)
+
+  const countries=useSelector(state=>state.covid.countries)
+  const country=useSelector(state=>state.covid.country)
   const dispatch=useDispatch()
+
   useEffect(()=>{
-    dispatch(fetchCountryCovid())
+    dispatch(fetchCountriesCovid())
   },[dispatch])
 
+ 
   return (
     <div className='header'>
         <Container>
@@ -20,14 +24,14 @@ function Header() {
         <p>For a Particlar select a Country From below</p>
         <Dropdown >
             <Dropdown.Toggle id="dropdown-button-dark-example1" variant='outline-dark' size='lg'>
-              Select Country
+              {country ? country : "Select Country"}
             </Dropdown.Toggle>
 
             <Dropdown.Menu variant="dark" className='menu-items' >
                 {
-                  countrys && (
-                    countrys.countries.map((country, key)=>(
-                      <Dropdown.Item key={key} href="#/action-1"  >{country.name}</Dropdown.Item>
+                  countries && (
+                    countries.countries.map((country, key)=>(
+                      <Dropdown.Item key={key}  onClick={()=>{ dispatch(fetchCovid(country.name)); dispatch(selectedCountry(country.name))}} eventKey={country.name} >{country.name}</Dropdown.Item>
                     ))
                   )
                 }
