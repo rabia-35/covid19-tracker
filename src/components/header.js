@@ -24,7 +24,7 @@ function Header() {
         <p>For a Particlar select a Country From below</p>
         <Dropdown >
             <Dropdown.Toggle id="dropdown-button-dark-example1" variant='outline-dark' size='lg'>
-              {country ? country : "Select Country"}
+              {country ? country : "WorldWide"}
             </Dropdown.Toggle>
 
             <Dropdown.Menu variant="dark" className='menu-items' >
